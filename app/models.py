@@ -15,7 +15,7 @@ class Shop(models.Model):
     address = models.CharField(max_length=30)
     phone = models.CharField(max_length=10)
     is_take_away = models.BooleanField(default=False)
-
+    img = models.ImageField(upload_to='shop/')
 
 
 
