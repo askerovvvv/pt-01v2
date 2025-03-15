@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from app.models import Region, Shop, District
+from app.models import Region, Shop, District, Saved
 
 
 class RegionSerializer(serializers.ModelSerializer):
@@ -38,13 +38,14 @@ class DistrictSerializer(serializers.ModelSerializer):
         model = District
         fields = "__all__"
 
-"""
-1) Должен начинаться 0
-2) Дальше должен начинаться либо с кода региона\ либо с сотового оператора
-3)
 
-312, 555, 557, 705, 707, 777
-"""
+class SavedSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Saved
+        fields = "__all__"
+
+
 
 
 

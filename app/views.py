@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from rest_framework.generics import ListCreateAPIView
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet, ViewSet
 
@@ -43,6 +44,9 @@ class ShopApiViewSet(ViewSet):
             serializer = ShopSerializer(shop)
             return Response(serializer.data, 200)
         return Response({"message": "not found!"}, 404)
+
+
+class SavedCreateListApiView(ListCreateAPIView):
 
 
 
