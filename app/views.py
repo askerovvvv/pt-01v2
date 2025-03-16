@@ -1,10 +1,11 @@
 from django.shortcuts import render
 from rest_framework.generics import ListCreateAPIView
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet, ViewSet
 
-from app.models import Region, Shop
-from app.serializers import RegionSerializer, ShopSerializer
+from app.models import Region, Shop, Saved
+from app.serializers import RegionSerializer, ShopSerializer, SavedSerializer
 
 
 # Create your views here.
@@ -47,8 +48,12 @@ class ShopApiViewSet(ViewSet):
 
 
 class SavedCreateListApiView(ListCreateAPIView):
+    permission_classes = [IsAuthenticated]
+    serializer_class = SavedSerializer
+    queryset = Saved.objects.all()
 
-
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
 
 
 

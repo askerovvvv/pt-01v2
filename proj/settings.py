@@ -136,3 +136,15 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     )
 }
+"""
+ {
+        "id": 1,
+        "email": "2@gmail.com",
+        "date_joined": "2025-03-15T11:56:47.945678Z",
+        "avatar": "/media/user/adminmail.com_3PT8RBC.jpg",
+        "budget": 21321123,
+        "department": {
+            "name": "Test",
+        }
+    }
+"""

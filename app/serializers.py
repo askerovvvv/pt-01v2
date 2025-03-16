@@ -40,6 +40,7 @@ class DistrictSerializer(serializers.ModelSerializer):
 
 
 class SavedSerializer(serializers.ModelSerializer):
+    user = serializers.IntegerField(read_only=True)
 
     class Meta:
         model = Saved
