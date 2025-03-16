@@ -40,14 +40,19 @@ class DistrictSerializer(serializers.ModelSerializer):
 
 
 class SavedSerializer(serializers.ModelSerializer):
-    user = serializers.IntegerField(read_only=True)
+    user = serializers.ReadOnlyField(source="user.email")
 
     class Meta:
         model = Saved
-        fields = "__all__"
+        fields = ("shop", "user",)
 
+    def validate(self, attrs):
+        shop = attrs.get("shop") # 1
+        print(self.user)
+        data_from_db = Saved.objects.filter(shop=shop)
+        print(data_from_db)
 
-
+        return attrs
 
 
 

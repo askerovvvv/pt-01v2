@@ -52,6 +52,12 @@ class SavedCreateListApiView(ListCreateAPIView):
     serializer_class = SavedSerializer
     queryset = Saved.objects.all()
 
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        user = self.request.user
+        queryset = queryset.filter(user=user)
+        return queryset
+
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
 
